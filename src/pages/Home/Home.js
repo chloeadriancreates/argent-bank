@@ -3,6 +3,7 @@ import "./Home.css";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import Features from "../../components/Features/Features";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
     useEffect(() => {
@@ -16,6 +17,7 @@ export default function Home() {
                 <Hero />
                 <Features />
             </main>
+            <Footer />
         </div>
     );
 }
