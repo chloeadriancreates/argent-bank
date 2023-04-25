@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import "./Home.css";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Features from "../../components/Features/Features";
-import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
     useEffect(() => {
