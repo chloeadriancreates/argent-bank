@@ -19,9 +19,41 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "react-app"
+    ],
+    "rules": {
+      "semi": [
+        "warn",
+        "always"
+      ],
+      "comma-dangle": [
+        "warn",
+        "never"
+      ],
+      "comma-spacing": [
+        "warn",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "no-multi-spaces": "warn",
+      "no-trailing-spaces": "warn",
+      "no-multiple-empty-lines": [
+        "warn",
+        {
+          "max": 2
+        }
+      ],
+      "quotes": [
+        "warn",
+        "double",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
