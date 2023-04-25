@@ -11,7 +11,7 @@ export default function SignIn() {
 
     return (
         <div className="sign-in-page">
-            <Header />
+            <Header signedIn={false} />
             <main className="main bg-dark">
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>

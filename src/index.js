@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
+import Profile from "./pages/Profile/Profile";
 // import Header from "./components/Header/Header";
 // import Footer from "./components/Footer/Footer";
 import reportWebVitals from "./reportWebVitals";
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <SignIn />
+  },
+  {
+    path: "/profile",
+    element: <Profile />
   }
 ]);
 
