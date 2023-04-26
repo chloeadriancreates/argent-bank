@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteToken } from "../../state/slices/tokenSlice";
+import { deleteUser } from "../../state/slices/userSlice";
 import { turnOffEditing } from "../../state/slices/editingSlice";
 
 export default function Header() {
@@ -26,6 +27,7 @@ export default function Header() {
                         <button onClick={() => {
                             dispatch(deleteToken());
                             dispatch(turnOffEditing());
+                            dispatch(deleteUser());
                         }} className="main-nav-item">
                             {/* <i className="fa fa-sign-out"></i> */}
                             Sign Out
