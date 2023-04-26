@@ -2,14 +2,15 @@ import "./SignInForm.css";
 import axios from "axios";
 // import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "../../state/slices/tokenSlice";
-import { useEffect, useState } from "react";
+import { setResponse } from "../../state/slices/responseSlice";
+import { useEffect } from "react";
 
 export default function SignInForm() {
-    const [response, setResponse] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const {response} = useSelector((state) => state.response);
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -18,7 +19,8 @@ export default function SignInForm() {
         const formJson = Object.fromEntries(formData.entries());
         try {
             const {data} = await axios.post("http://localhost:3001/api/v1/user/login", formJson);
-            setResponse(await data);
+            dispatch(setResponse(data));
+            console.log("fucking hello???");
         } catch(error) {
             console.log(error);
             setResponse(false);
