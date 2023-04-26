@@ -1,7 +1,7 @@
 import "./ProfileEditor.css";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { toggleEditing } from "../../state/slices/editingSlice";
+import { turnOnEditing, turnOffEditing } from "../../state/slices/editingSlice";
 
 export default function ProfileEditor() {
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function ProfileEditor() {
                 }
             });
             console.log(await data);
-            dispatch(toggleEditing());
+            dispatch(turnOffEditing());
         } catch(error) {
             console.log(error);
         }
@@ -49,7 +49,7 @@ export default function ProfileEditor() {
         return (
             <div className="header">
                 <h1>Welcome back<br />{firstName} {lastName}!</h1>
-                <button className="edit-button" onClick={() => dispatch(toggleEditing())}>Edit Name</button>
+                <button className="edit-button" onClick={() => dispatch(turnOnEditing())}>Edit Name</button>
             </div>
         );
     }

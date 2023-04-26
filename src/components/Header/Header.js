@@ -1,11 +1,14 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteToken } from "../../state/slices/tokenSlice";
+import { turnOffEditing } from "../../state/slices/editingSlice";
 
-export default function Header({signedIn}) {
+export default function Header() {
     const dispatch = useDispatch();
+    const {token} = useSelector((state) => state.token);
+    const {user} = useSelector((state) => state.user);
 
     return (
         <nav className="main-nav">
@@ -13,14 +16,17 @@ export default function Header({signedIn}) {
                 <img className="main-nav-logo-image" src={logo} alt="Argent Bank Logo" />
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
-                { signedIn
+                { token
                 ?
                     <div>
                         <Link to="/profile" className="main-nav-item">
                             {/* <i className="fa fa-user-circle"></i> */}
-                            Tony
+                            {user.firstName}
                         </Link>
-                        <button onClick={() => dispatch(deleteToken())} className="main-nav-item">
+                        <button onClick={() => {
+                            dispatch(deleteToken());
+                            dispatch(turnOffEditing());
+                        }} className="main-nav-item">
                             {/* <i className="fa fa-sign-out"></i> */}
                             Sign Out
                         </button>

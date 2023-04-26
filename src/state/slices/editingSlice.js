@@ -8,11 +8,14 @@ export const editingSlice = createSlice({
   name: "editing",
   initialState,
   reducers: {
-    toggleEditing: (state) => {
-      state.editing = !state.editing;
+    turnOnEditing: (state) => {
+      state.editing = true;
+    },
+    turnOffEditing: (state) => {
+      state.editing = false;
     }
   }
 });
 
-export const { toggleEditing } = editingSlice.actions;
+export const { turnOnEditing, turnOffEditing } = editingSlice.actions;
 export default editingSlice.reducer;
