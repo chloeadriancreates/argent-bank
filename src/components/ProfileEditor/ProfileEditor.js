@@ -33,11 +33,15 @@ export default function ProfileEditor() {
         return (
             <div className="header">
                 <h1>Welcome back</h1>
-                <form method="post" onSubmit={handleSubmit}>
-                    <input name="firstName" type="text" id="firstName" />
-                    <input name="lastName" type="text" id="lastName" />
-                    <button type="submit" className="edit-button">Save</button>
-                    <button type="reset" className="edit-button">Cancel</button>
+                <form method="post" onSubmit={handleSubmit} className="editing-form">
+                    <div className="editing-form-column editing-form-left-column">
+                        <input name="firstName" type="text" id="firstName" placeholder={firstName} className="editing-form-input" />
+                        <button type="submit" className="edit-button">Save</button>
+                    </div>
+                    <div className="editing-form-column editing-form-right-column">
+                        <input name="lastName" type="text" id="lastName" placeholder={lastName} className="editing-form-input" />
+                        <button type="reset" className="edit-button">Cancel</button>
+                    </div>
                 </form>
             </div>
         );

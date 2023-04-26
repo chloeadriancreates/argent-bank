@@ -1,12 +1,42 @@
 .edit-button {
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px;
-  }
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+}
   
-  .header {
-    color: #fff;
-    margin-bottom: 2rem;
-  }
+.header {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.editing-form {
+  display: flex;
+}
+
+.editing-form-column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 8px;
+}
+
+.editing-form-left-column {
+  align-items: flex-end;
+}
+
+.editing-form-right-column {
+  align-items: flex-start;
+}
+
+.editing-form-input {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.editing-form-input::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+}
+
