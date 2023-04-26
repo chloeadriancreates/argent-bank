@@ -1,8 +1,12 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.png";
+import { useDispatch } from "react-redux";
+import { deleteToken } from "../../state/slices/tokenSlice";
 
 export default function Header({signedIn}) {
+    const dispatch = useDispatch();
+
     return (
         <nav className="main-nav">
             <Link to="/" className="main-nav-logo">
@@ -16,10 +20,10 @@ export default function Header({signedIn}) {
                             {/* <i className="fa fa-user-circle"></i> */}
                             Tony
                         </Link>
-                        <Link to="/" className="main-nav-item">
+                        <button onClick={() => dispatch(deleteToken())} className="main-nav-item">
                             {/* <i className="fa fa-sign-out"></i> */}
                             Sign Out
-                        </Link>
+                        </button>
                     </div>
                 :
                     <Link to="/signin" className="main-nav-item">

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Profile.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -16,8 +17,20 @@ export default function Profile() {
     }, []);
 
     useEffect(() => {
+        console.log(token);
         if(!token) {
             navigate("/signin");
+        } else {
+            const fetchProfile = async() => {
+                try {
+                    const {data} = await axios.post("http://localhost:3001/api/v1/user/profile", token);
+                    console.log(await data);
+                    return await data;
+                } catch(error) {
+                    console.log(error);
+                }
+            };
+            fetchProfile();
         }
     }, [token, navigate]);
 
