@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../state/slices/userSlice";
+import { deleteResponse, setResponse } from "../../state/slices/responseSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Profile.css";
@@ -9,12 +11,19 @@ import ProfileEditor from "../../components/ProfileEditor/ProfileEditor";
 import Account from "../../components/Account/Account";
 
 export default function Profile() {
-    const {token} = useSelector((state) => state.token);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const {token} = useSelector((state) => state.token);
+    const {response} = useSelector((state) => state.response);
+    const {user} = useSelector((state) => state.user);
 
     useEffect(() => {
         document.title = "Argent Bank – Tony Stark";
     }, []);
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
     useEffect(() => {
         console.log(token);
@@ -23,16 +32,26 @@ export default function Profile() {
         } else {
             const fetchProfile = async() => {
                 try {
-                    const {data} = await axios.post("http://localhost:3001/api/v1/user/profile", token);
-                    console.log(await data);
-                    return await data;
+                    const {data} = await axios.post("http://localhost:3001/api/v1/user/profile", {},
+                    { headers: {
+                        authorization: `Bearer${token}`
+                      }
+                    });
+                    dispatch(setResponse(data));
                 } catch(error) {
                     console.log(error);
                 }
             };
             fetchProfile();
         }
-    }, [token, navigate]);
+    }, [token, navigate, dispatch]);
+
+    useEffect(() => {
+        if(response) {
+            dispatch(setUser(response.body));
+            dispatch(deleteResponse());
+        }
+    }, [response, dispatch]);
 
     if(token) {
         return (
