@@ -31,9 +31,10 @@ export default function Profile() {
             const fetchProfile = async() => {
                 try {
                     const {data} = await axios.post("http://localhost:3001/api/v1/user/profile", {},
-                    { headers: {
-                        authorization: `Bearer${token}`
-                      }
+                    { headers:
+                        {
+                            authorization: `Bearer${token}`
+                        }
                     });
                     dispatch(setResponse(data));
                 } catch(error) {
