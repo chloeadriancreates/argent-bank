@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "../../state/slices/tokenSlice";
-import { setResponse } from "../../state/slices/responseSlice";
+import { deleteResponse, setResponse } from "../../state/slices/responseSlice";
 import { useEffect } from "react";
 
 export default function SignInForm() {
@@ -20,7 +20,6 @@ export default function SignInForm() {
         try {
             const {data} = await axios.post("http://localhost:3001/api/v1/user/login", formJson);
             dispatch(setResponse(data));
-            console.log("fucking hello???");
         } catch(error) {
             console.log(error);
             setResponse(false);
@@ -31,6 +30,7 @@ export default function SignInForm() {
         console.log(response);
         if(response) {
             dispatch(setToken(response.body.token));
+            dispatch(deleteResponse());
             // return redirect("/profile");
             navigate("/profile");
         }
