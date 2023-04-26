@@ -15,6 +15,12 @@ export default function ProfileEditor() {
         const formData = new FormData(form);
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
+        if(formJson.firstName === "") {
+            formJson.firstName = firstName;
+        }
+        if(formJson.lastName === "") {
+            formJson.lastName = lastName;
+        }
         try {
             const {data} = await axios.put("http://localhost:3001/api/v1/user/profile", formJson,
             { headers:
