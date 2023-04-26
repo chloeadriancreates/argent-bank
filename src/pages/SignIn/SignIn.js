@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "./SignIn.css";
 import SignInForm from "../../components/SignInForm/SignInForm";
+import "./SignIn.css";
 
 export default function SignIn() {
     useEffect(() => {

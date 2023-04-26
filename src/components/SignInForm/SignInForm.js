@@ -2,11 +2,14 @@ import "./SignInForm.css";
 import axios from "axios";
 // import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../state/slices/tokenSlice";
 import { useEffect, useState } from "react";
 
 export default function SignInForm() {
     const [response, setResponse] = useState(null);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -16,8 +19,6 @@ export default function SignInForm() {
         try {
             const {data} = await axios.post("http://localhost:3001/api/v1/user/login", formJson);
             setResponse(await data);
-            // return redirect("/profile");
-            // navigate("/profile");
         } catch(error) {
             console.log(error);
             setResponse(false);
@@ -26,7 +27,12 @@ export default function SignInForm() {
 
     useEffect(() => {
         console.log(response);
-    }, [response]);
+        if(response) {
+            dispatch(setToken(response.body.token));
+            // return redirect("/profile");
+            navigate("/profile");
+        }
+    }, [response, dispatch, navigate]);
 
     return (
             <form method="post" onSubmit={handleSubmit}>
