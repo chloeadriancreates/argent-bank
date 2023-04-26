@@ -22,6 +22,7 @@ export default function SignInForm() {
             dispatch(setResponse(data));
         } catch(error) {
             console.log(error);
+            dispatch(setResponse(false));
         }
     };
 

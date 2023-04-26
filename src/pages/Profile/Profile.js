@@ -16,12 +16,10 @@ export default function Profile() {
     const {token} = useSelector((state) => state.token);
     const {response} = useSelector((state) => state.response);
     const {user} = useSelector((state) => state.user);
+    const {editing} = useSelector((state) => state.editing);
 
     useEffect(() => {
-        document.title = "Argent Bank – Tony Stark";
-    }, []);
-
-    useEffect(() => {
+        document.title = "Argent Bank – " + user.firstName + " " + user.lastName;
         console.log(user);
     }, [user]);
 
@@ -44,7 +42,7 @@ export default function Profile() {
             };
             fetchProfile();
         }
-    }, [token, navigate, dispatch]);
+    }, [editing, token, navigate, dispatch]);
 
     useEffect(() => {
         if(response) {
