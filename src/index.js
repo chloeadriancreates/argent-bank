@@ -6,7 +6,7 @@ import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import Profile from "./pages/Profile/Profile";
 import reportWebVitals from "./reportWebVitals";
-import { store } from "./state/store";
+import { store } from "./app/store";
 import { Provider } from "react-redux";
 
 const router = createBrowserRouter([

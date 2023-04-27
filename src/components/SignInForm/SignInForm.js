@@ -2,7 +2,7 @@ import "./SignInForm.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../state/slices/tokenSlice";
+import { setToken } from "../../app/slices/tokenSlice";
 import { useState } from "react";
 
 export default function SignInForm() {
