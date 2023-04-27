@@ -21,7 +21,7 @@ export default function Header() {
                 ?
                     <div>
                         <Link to="/profile" className="main-nav-item">
-                            {/* <i className="fa fa-user-circle"></i> */}
+                            <i className="fa fa-user-circle main-nav-icon"></i>
                             {user.firstName}
                         </Link>
                         <button onClick={() => {
@@ -29,13 +29,13 @@ export default function Header() {
                             dispatch(turnOffEditing());
                             dispatch(deleteUser());
                         }} className="main-nav-item">
-                            {/* <i className="fa fa-sign-out"></i> */}
+                            <i className="fa fa-sign-out main-nav-icon"></i>
                             Sign Out
                         </button>
                     </div>
                 :
                     <Link to="/signin" className="main-nav-item">
-                        {/* <i class="fa fa-user-circle"></i> */}
+                        <i className="fa fa-user-circle main-nav-icon"></i>
                         Sign In
                     </Link>
                 }
