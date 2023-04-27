@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../../state/slices/userSlice";
-import { deleteResponse, setResponse } from "../../state/slices/responseSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Profile.css";
@@ -14,17 +13,14 @@ export default function Profile() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {token} = useSelector((state) => state.token);
-    const {response} = useSelector((state) => state.response);
     const {user} = useSelector((state) => state.user);
     const {editing} = useSelector((state) => state.editing);
 
     useEffect(() => {
         document.title = "Argent Bank – " + user.firstName + " " + user.lastName;
-        console.log(user);
     }, [user]);
 
     useEffect(() => {
-        console.log(token);
         if(!token) {
             navigate("/signin");
         } else {
@@ -36,7 +32,7 @@ export default function Profile() {
                             authorization: `Bearer${token}`
                         }
                     });
-                    dispatch(setResponse(data));
+                    dispatch(setUser(await data.body));
                 } catch(error) {
                     console.log(error);
                 }
@@ -44,13 +40,6 @@ export default function Profile() {
             fetchProfile();
         }
     }, [editing, token, navigate, dispatch]);
-
-    useEffect(() => {
-        if(response) {
-            dispatch(setUser(response.body));
-            dispatch(deleteResponse());
-        }
-    }, [response, dispatch]);
 
     if(token) {
         return (
