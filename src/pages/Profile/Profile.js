@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../../state/slices/userSlice";
+import { setUser } from "../../app/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Profile.css";
@@ -14,7 +14,6 @@ export default function Profile() {
     const dispatch = useDispatch();
     const {token} = useSelector((state) => state.token);
     const {user} = useSelector((state) => state.user);
-    const {editing} = useSelector((state) => state.editing);
 
     useEffect(() => {
         document.title = "Argent Bank – " + user.firstName + " " + user.lastName;
@@ -39,7 +38,7 @@ export default function Profile() {
             };
             fetchProfile();
         }
-    }, [editing, token, navigate, dispatch]);
+    }, [token, navigate, dispatch]);
 
     if(token) {
         return (

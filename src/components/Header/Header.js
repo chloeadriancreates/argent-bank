@@ -2,9 +2,9 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteToken } from "../../state/slices/tokenSlice";
-import { deleteUser } from "../../state/slices/userSlice";
-import { turnOffEditing } from "../../state/slices/editingSlice";
+import { deleteToken } from "../../app/slices/tokenSlice";
+import { deleteUser } from "../../app/slices/userSlice";
+import { turnOffEditing } from "../../app/slices/editingSlice";
 
 export default function Header() {
     const dispatch = useDispatch();

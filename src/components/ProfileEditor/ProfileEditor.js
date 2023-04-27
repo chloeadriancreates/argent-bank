@@ -1,20 +1,20 @@
 import "./ProfileEditor.css";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { turnOnEditing, turnOffEditing } from "../../state/slices/editingSlice";
+import { setUser } from "../../app/slices/userSlice";
+import { useState } from "react";
 
 export default function ProfileEditor() {
     const dispatch = useDispatch();
     const {token} = useSelector((state) => state.token);
     const {firstName, lastName} = useSelector((state) => state.user.user);
-    const {editing} = useSelector((state) => state.editing);
+    const [editing, setEditing] = useState(false);
 
     const handleSubmit = async(event) => {
         event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
         const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
         if(formJson.firstName === "") {
             formJson.firstName = firstName;
         }
@@ -28,8 +28,8 @@ export default function ProfileEditor() {
                     authorization: `Bearer${token}`
                 }
             });
-            console.log(await data);
-            dispatch(turnOffEditing());
+            dispatch(setUser(data.body));
+            setEditing(false);
         } catch(error) {
             console.log(error);
         }
@@ -46,7 +46,7 @@ export default function ProfileEditor() {
                     </div>
                     <div className="editing-form-column editing-form-right-column">
                         <input name="lastName" type="text" id="lastName" placeholder={lastName} className="editing-form-input" />
-                        <button className="edit-button" onClick={() => dispatch(turnOffEditing())}>Cancel</button>
+                        <button className="edit-button" onClick={() => setEditing(false)}>Cancel</button>
                     </div>
                 </form>
             </div>
@@ -55,7 +55,7 @@ export default function ProfileEditor() {
         return (
             <div className="header">
                 <h1>Welcome back<br />{firstName} {lastName}!</h1>
-                <button className="edit-button" onClick={() => dispatch(turnOnEditing())}>Edit Name</button>
+                <button className="edit-button" onClick={() => setEditing(true)}>Edit Name</button>
             </div>
         );
     }
