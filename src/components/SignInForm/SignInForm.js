@@ -1,6 +1,5 @@
 import "./SignInForm.css";
 import axios from "axios";
-// import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "../../state/slices/tokenSlice";
@@ -31,7 +30,6 @@ export default function SignInForm() {
         if(response) {
             dispatch(setToken(response.body.token));
             dispatch(deleteResponse());
-            // return redirect("/profile");
             navigate("/profile");
         }
     }, [response, dispatch, navigate]);
