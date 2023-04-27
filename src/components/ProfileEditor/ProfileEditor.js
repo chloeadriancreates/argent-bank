@@ -38,7 +38,7 @@ export default function ProfileEditor() {
     if(editing) {
         return (
             <div className="header">
-                <h1>Welcome back</h1>
+                <h1 className="profile-title">Welcome back</h1>
                 <form method="post" onSubmit={handleSubmit} className="editing-form">
                     <div className="editing-form-column editing-form-left-column">
                         <input name="firstName" type="text" id="firstName" placeholder={firstName} className="editing-form-input" />
@@ -46,7 +46,7 @@ export default function ProfileEditor() {
                     </div>
                     <div className="editing-form-column editing-form-right-column">
                         <input name="lastName" type="text" id="lastName" placeholder={lastName} className="editing-form-input" />
-                        <button type="reset" className="edit-button">Cancel</button>
+                        <button className="edit-button" onClick={() => dispatch(turnOffEditing())}>Cancel</button>
                     </div>
                 </form>
             </div>

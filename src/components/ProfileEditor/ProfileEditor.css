@@ -4,11 +4,16 @@
   color: #fff;
   font-weight: bold;
   padding: 10px;
+  min-width: 80px;
 }
   
 .header {
   color: #fff;
   margin-bottom: 2rem;
+}
+
+.profile-title {
+  margin-bottom: 10px;
 }
 
 .editing-form {
