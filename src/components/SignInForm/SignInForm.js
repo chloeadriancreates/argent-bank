@@ -44,13 +44,13 @@ export default function SignInForm() {
                     <label htmlFor="password">Password</label>
                     <input name="password" type="password" id="password" />
                 </div>
-                { response === false &&
-                    <p>Wrong credentials!</p>
-                }
                 <div className="input-remember">
                     <input type="checkbox" id="remember-me" />
                     <label htmlFor="remember-me">Remember me</label>
                 </div>
+                { response === false &&
+                    <p className="error-message">Wrong credentials! Make sure you used the right email and password.</p>
+                }
                 <button type="submit" className="sign-in-button">Sign In</button>
             </form>
     );
