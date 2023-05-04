@@ -10,12 +10,11 @@
 
 ## Presentation
 This is the first version of a website for a fictional bank called ArgentBank. 
-This is project #12 of my OpenClassrooms front-end development course!
+This is project #13 of my OpenClassrooms front-end development course!
 
 ## Prerequisites
 - [NodeJS (version 16.17.0)](https://nodejs.org/en/)
 - [NPM (version 9.4.0)](https://www.npmjs.com/)
-- [React (version 18.2.0)](https://en.reactjs.org/)
 
 ## Installing the app
 
