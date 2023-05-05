@@ -11,7 +11,7 @@ export default function Home() {
 
     return (
         <div>
-            <Header signedIn={false} />
+            <Header />
             <main>
                 <Hero />
                 <Features />

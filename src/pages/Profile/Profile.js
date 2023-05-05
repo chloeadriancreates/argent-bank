@@ -43,7 +43,7 @@ export default function Profile() {
     if(token) {
         return (
             <div className="profile-page">
-                <Header signedIn={true} />
+                <Header />
                 <main className="main bg-dark">
                     <ProfileEditor />
                     <h2 className="sr-only">Accounts</h2>
