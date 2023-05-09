@@ -10,8 +10,6 @@ export default function Header() {
     const {token} = useSelector((state) => state.token);
     const {user} = useSelector((state) => state.user);
 
-    console.log(user.firstName);
-
     return (
         <nav className="main-nav">
             <Link to="/" className="main-nav-logo">
