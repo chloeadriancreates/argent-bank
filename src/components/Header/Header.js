@@ -8,7 +8,9 @@ import { deleteUser } from "../../app/slices/userSlice";
 export default function Header() {
     const dispatch = useDispatch();
     const {token} = useSelector((state) => state.token);
-    const {firstName} = useSelector((state) => state.user);
+    const {user} = useSelector((state) => state.user);
+
+    console.log(user.firstName);
 
     return (
         <nav className="main-nav">
@@ -21,7 +23,7 @@ export default function Header() {
                     <div>
                         <Link to="/profile" className="main-nav-item">
                             <i className="fa fa-user-circle main-nav-icon"></i>
-                            {firstName}
+                            {user.firstName}
                         </Link>
                         <button onClick={() => {
                             dispatch(deleteToken());
