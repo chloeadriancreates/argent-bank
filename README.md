@@ -1,8 +1,8 @@
 ![Banner](READMEbanner.jpg)
 
 ## Presentation
-This is a website for a fictional bank called ArgentBank. 
-This is project #13 of my OpenClassrooms front-end development course!
+*This is a fictional project, which was project 13 of my OpenClassrooms front-end development program.*\
+Argent Bank needed a website to allow their users to log in, edit their personal information and see their transactions.
 
 ## Prerequisites
 - [NodeJS (version 16.17.0)](https://nodejs.org/en/)
